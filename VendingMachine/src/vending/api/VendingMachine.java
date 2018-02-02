@@ -1,9 +1,7 @@
 /**
  * 
  */
-package vending;
-
-import vending.states.State;
+package vending.api;
 
 /**
  * @author Itumeleng
