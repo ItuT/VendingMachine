@@ -8,5 +8,5 @@ package vending.api;
  *
  */
 public interface VendingMachine {
-	
+	public boolean isHealthy();
 }

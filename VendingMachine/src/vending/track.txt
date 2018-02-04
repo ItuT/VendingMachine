@@ -1,0 +1,2 @@
+1. http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/griz_jersey_intro/Grizzly-Jersey-Intro.html#overview
+2. https://stackoverflow.com/questions/32090921/maven-invalid-loc-header-bad-signature
