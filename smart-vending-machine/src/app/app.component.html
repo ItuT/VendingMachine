@@ -38,5 +38,8 @@
     <button>Refresh Coins</button>
     <br>
     <br>
+    <button *ngIf="serverResult">{{serverRes}}</button>
+    <br>
+    <br>  
     <button (click)="postProduct()">Collect Product & Change</button>
  

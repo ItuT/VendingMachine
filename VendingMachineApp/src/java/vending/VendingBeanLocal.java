@@ -6,6 +6,7 @@
 package vending;
 
 import javax.ejb.Local;
+import javax.json.JsonObject;
 
 /**
  *
@@ -13,5 +14,5 @@ import javax.ejb.Local;
  */
 @Local
 public interface VendingBeanLocal {
-    
+      JsonObject processPurchase(JsonObject jobject);
 }

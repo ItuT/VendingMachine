@@ -15,16 +15,27 @@ export class AppComponent {
   change:any;
   cost:any;
   selectedProd:any;
+  state:any;
+  serverResult: boolean = false;
+  serverRes:any;
 
   constructor(private httpClient:HttpClient){
     this.getProducts();
     this.getCoins();
+    this.state = "START";
     this.balance = 0.0;
     this.total = 0.0;
     this.change = 0.0;
     this.cost = 0.0;
   }
 
+  getState(state: any){
+    return this.state;
+  }
+
+  setState(state: any){
+    this.state = state;
+  }
 
   getCoins(){
     //http://35.177.195.110/products?name=%22itu%22
@@ -65,13 +76,19 @@ export class AppComponent {
   }
 
   postProduct(){
-    this.httpClient.post('http://localhost:8080/VendingMachineApp/products',{
+    console.log("price = "+this.total);
+    //
+    //http://localhost:8080/VendingMachineApp/products
+    this.httpClient.post('http://35.177.195.110/products',{
       "product":this.selectedProd,
-      "paid":this.total
+      "paid":""+this.total,
+      "state":"start"
     })
     .subscribe(
       (data:any) => {
+        this.serverResult = true;
         console.log(data);
+        this.serverRes = data["result"];
       }
     )
   }
@@ -95,7 +112,8 @@ export class AppComponent {
   }
 
   productSelected(prod: any){
-    this.selectedProd = ""+prod;
+    console.log("prooo "+prod);
+    this.selectedProd = prod;
     this.cost = parseFloat(window.localStorage.getItem(prod));
   }
 
