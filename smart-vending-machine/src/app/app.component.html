@@ -10,30 +10,33 @@
               <td>
                   <input type="radio" name="radiogroup" 
                       [checked]="idx === 0" 
-                      [value]="entry.id"> 
+                      [value]="entry.id"
+                      (click)="productSelected(entry)"> 
               </td>
               <td>
                   <div>{{ getProductPrice(entry) }}</div>
               </td>
           </tr>
         </table>
+        <br>
+        <button>Refresh Products</button>
   <br>
   <br>
-  <label>Total: </label>
+  <label>Balance: {{getBalance()}}</label>
   <br>
-  <label>Balance: </label>
+  <label>Total Paid: {{getTotalPaid()}}</label>
   <br>
-  <label>Change: </label>
+  <label>Change: {{getChange()}}</label>
   <br>
   <br>
   <table style="text-align: center">
       <tr *ngFor="let entry of coins">
-          <td>{{ entry }}</td>
-          <td>
-              <input type="radio" name="radiogroup" 
-                  [checked]="idx === 0" 
-                  [value]="entry.id"> 
-          </td>
+          <td><button (click)="coinInserted(entry)">{{ entry }}</button></td>
       </tr>
     </table>
+    <br>
+    <button>Refresh Coins</button>
+    <br>
+    <br>
+    <button (click)="postProduct()">Collect Product & Change</button>
  

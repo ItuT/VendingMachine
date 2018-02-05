@@ -13,16 +13,23 @@ export class AppComponent {
   total:any;
   balance:any;
   change:any;
+  cost:any;
+  selectedProd:any;
 
   constructor(private httpClient:HttpClient){
     this.getProducts();
     this.getCoins();
+    this.balance = 0.0;
+    this.total = 0.0;
+    this.change = 0.0;
+    this.cost = 0.0;
   }
 
 
   getCoins(){
     //http://35.177.195.110/products?name=%22itu%22
-    this.httpClient.get('http://localhost:8080/VendingMachineApp/coins')
+    //http://localhost:8080/VendingMachineApp/coins
+    this.httpClient.get('http://35.177.195.110/coins')
     .subscribe(
       (data:any) => {
         this.coins = [];
@@ -40,7 +47,8 @@ export class AppComponent {
 
   getProducts(){
    //http://35.177.195.110/products?name=%22itu%22
-   this.httpClient.get('http://localhost:8080/VendingMachineApp/products?name=%22itu%22')
+  // http://localhost:8080/VendingMachineApp/products?name=%22itu%22
+   this.httpClient.get('http://35.177.195.110/products')
    .subscribe(
      (data:any) => {
        this.items = [];
@@ -56,7 +64,51 @@ export class AppComponent {
    )
   }
 
+  postProduct(){
+    this.httpClient.post('http://localhost:8080/VendingMachineApp/products',{
+      "product":this.selectedProd,
+      "paid":this.total
+    })
+    .subscribe(
+      (data:any) => {
+        console.log(data);
+      }
+    )
+  }
+
   getProductPrice(productName:any){
     return "R "+window.localStorage.getItem(productName)+"0";
   }
+
+  coinInserted(coin:any){
+    
+      this.total = this.total + parseFloat(window.localStorage.getItem(coin));
+      //console.log(window.localStorage.getItem(coin));
+  }
+
+  getBalance(){
+    if(this.cost > this.total)
+    this.balance = this.cost - this.total;
+    else
+      this.balance = 0;
+    return this.balance;
+  }
+
+  productSelected(prod: any){
+    this.selectedProd = ""+prod;
+    this.cost = parseFloat(window.localStorage.getItem(prod));
+  }
+
+  getTotalPaid(){
+    return this.total;
+  }
+
+  getChange(){
+    if(this.total >= this.cost){
+      this.change = this.total - this.cost;
+     // this.postProduct();
+    }
+    return this.change;
+  }
+
 }
