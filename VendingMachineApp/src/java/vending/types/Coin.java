@@ -8,7 +8,7 @@ package vending.types;
  *
  */
 public enum Coin {
-    FIFTYCENTS("fifty_cents",0.5), ONERAND("one_rand",1), TWORAND("three_rand",2), FIVERAND("five_rand",5);
+    FIFTYCENTS("Fifty Cents",0.5), ONERAND("One Rand",1), TWORAND("Three Rand",2), FIVERAND("Five Rand",5);
    
     private double denomination;
     private String name;

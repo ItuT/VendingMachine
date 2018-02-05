@@ -26,7 +26,7 @@
 
     <filter-mapping>
         <filter-name>productsFilter</filter-name>
-        <servlet-name>products</servlet-name>
+        <url-pattern>/*</url-pattern>
     </filter-mapping>
    
 </web-app>

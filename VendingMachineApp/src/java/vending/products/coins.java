@@ -64,7 +64,7 @@ public class coins extends HttpServlet {
         JsonObject jo = Json.createObjectBuilder()
                 .add("coins", Json.createArrayBuilder()
                   .add(Json.createObjectBuilder()
-                    .add(Coin.FIFTYCENTS.toString(),Coin.FIFTYCENTS.getDenomination())
+                    .add(Coin.FIFTYCENTS.getName(),Coin.FIFTYCENTS.getDenomination())
                     .add(Coin.ONERAND.getName(), Coin.ONERAND.getDenomination())
                     .add(Coin.TWORAND.getName(), Coin.TWORAND.getDenomination())
                     .add(Coin.FIVERAND.getName(), Coin.FIVERAND.getDenomination())
