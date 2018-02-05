@@ -7,42 +7,69 @@
   </div>
   <br>
   <table class="text-info text-center col-md-12" style="text-align: center">
-    <tr *ngFor="let entry of items">
-      <td><strong>{{ entry }}</strong></td>
+    <tr *ngFor="let entry of items" >
+      <td>
+        <strong>{{ entry }}</strong>
+      </td>
       <td>
         <input type="radio" name="radiogroup" [checked]="idx === 0" [value]="entry.id" (click)="productSelected(entry)">
       </td>
       <td>
-        <div><strong>{{ getProductPrice(entry) }}</strong></div>
+        <div>
+          <strong>{{ getProductPrice(entry) }}</strong>
+        </div>
       </td>
     </tr>
   </table>
   <br>
-  <button class="text-info text-center col-md-12"><strong>Refresh Products</strong></button>
+  <button class="text-info text-center col-md-12" (click)="refreshProducts()">
+    <strong>Refresh Products</strong>
+  </button>
   <br>
   <br>
   <div class="text-warning text-center col-md-12 ">
-    <label><strong>Balance: {{getBalance()}}</strong></label>
+    <label>
+      <strong>Balance: {{getBalance()}}</strong>
+    </label>
     <br>
-    <label><strong>Total Paid: {{getTotalPaid()}}</strong></label>
+    <label>
+      <strong>Total Paid: {{getTotalPaid()}}</strong>
+    </label>
     <br>
-    <label><strong>Change: {{getChange()}}</strong></label>
+    <label>
+      <strong>Change: {{getChange()}}</strong>
+    </label>
   </div>
   <table style="text-align: center" class=" text-center col-md-12">
     <tr *ngFor="let entry of coins">
       <td>
-        <button class="btn btn-primary btn-circle" (click)="coinInserted(entry)">{{ entry }}<i class="fa usd-circle"></i></button>
+        <button class="btn btn-primary btn-circle col-md-10" (click)="coinInserted(entry)">{{ entry }}</button>
       </td>
     </tr>
   </table>
   <br>
-  <button class="text-info text-center col-md-12"><strong>Refresh Coins</strong></button>
+  <div class="text-info text-center col-md-12">
+  <button class="text-info text-center col-md-8" (click)="refreshCoins()">
+    <strong>Refresh Coins</strong>
+  </button>
+  <br>
+  <br>
+  <button class="text-danger text-center col-md-8" (click)="returnCoins()">
+      <strong>Return Coins</strong>
+    </button>
+</div>
   <br>
 
-  <button *ngIf="serverResult" class="btn btn-info text-center col-md-12"><label class="text-danger"><strong>{{serverRes}}</strong></label></button>
+  <button *ngIf="serverResult" class="btn btn-info text-center col-md-12">
+    <label class="text-danger">
+      <strong>{{serverRes}}</strong>
+    </label>
+  </button>
   <br>
   <br>
-  <button class="btn btn-success text-center col-md-12" (click)="postProduct()">Collect Product & Change</button>
+  <div class="text-center col-md-12">
+    <button class="btn btn-success text-center col-md-6" (click)="postProduct()">Collect Product & Change</button>
+  </div>
   <br>
   <br>
 </div>

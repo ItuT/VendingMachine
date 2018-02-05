@@ -129,4 +129,23 @@ export class AppComponent {
     return this.change;
   }
 
+  refreshProducts(){
+    this.cost = 0.0;
+    this.getBalance();
+    this.change = this.balance;
+    this.getProducts();
+  }
+
+  refreshCoins(){
+    this.refreshCoins();
+  }
+
+  returnCoins(){
+    this.balance = 0.0;
+    this.change = 0.0;
+    this.cost = 0.0;
+    this.total = 0.0;
+    this.getCoins();
+  }
+
 }
