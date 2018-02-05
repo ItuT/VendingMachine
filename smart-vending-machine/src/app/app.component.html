@@ -1,24 +1,39 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div class="col-md-12">
-  <div class="row">
     <div style="text-align:center">
       <h1>
         Welcome to {{ title }}!
       </h1>
     </div>
-  </div>
-  <div class="row">
-      <div class="col-md-6 text-center">
+        <table style="text-align: center">
           <tr *ngFor="let entry of items">
               <td>{{ entry }}</td>
               <td>
                   <input type="radio" name="radiogroup" 
                       [checked]="idx === 0" 
-                      [value]="entry.id">
+                      [value]="entry.id"> 
+              </td>
+              <td>
+                  <div>{{ getProductPrice(entry) }}</div>
               </td>
           </tr>
-      </div>
-      <div class="col-md-6"></div>
-
-  </div>
-</div>
+        </table>
+  <br>
+  <br>
+  <label>Total: </label>
+  <br>
+  <label>Balance: </label>
+  <br>
+  <label>Change: </label>
+  <br>
+  <br>
+  <table style="text-align: center">
+      <tr *ngFor="let entry of coins">
+          <td>{{ entry }}</td>
+          <td>
+              <input type="radio" name="radiogroup" 
+                  [checked]="idx === 0" 
+                  [value]="entry.id"> 
+          </td>
+      </tr>
+    </table>
+ 
