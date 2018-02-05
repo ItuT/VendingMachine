@@ -18,6 +18,8 @@ export class AppComponent {
   state:any;
   serverResult: boolean = false;
   serverRes:any;
+  coinsReturned: boolean = false;
+  coinsToReturn:any;
 
   constructor(private httpClient:HttpClient){
     this.getProducts();
@@ -94,12 +96,16 @@ export class AppComponent {
   }
 
   getProductPrice(productName:any){
+   // this.serverRes = false;
+    //this.coinsReturned =false;
     return "R "+window.localStorage.getItem(productName)+"0";
   }
 
   coinInserted(coin:any){
-    
+    this.serverRes = false;
+    this.coinsReturned =false;
       this.total = this.total + parseFloat(window.localStorage.getItem(coin));
+      this.coinsToReturn = this.total;
       //console.log(window.localStorage.getItem(coin));
   }
 
@@ -112,6 +118,8 @@ export class AppComponent {
   }
 
   productSelected(prod: any){
+    this.serverRes = false;
+    this.coinsReturned =false;
     console.log("prooo "+prod);
     this.selectedProd = prod;
     this.cost = parseFloat(window.localStorage.getItem(prod));
@@ -130,6 +138,8 @@ export class AppComponent {
   }
 
   refreshProducts(){
+    this.serverRes = false;
+    this.coinsReturned =false;
     this.cost = 0.0;
     this.getBalance();
     this.change = this.balance;
@@ -137,7 +147,9 @@ export class AppComponent {
   }
 
   refreshCoins(){
-    this.refreshCoins();
+    this.serverRes = false;
+    this.coinsReturned =false;
+    this.getCoins();
   }
 
   returnCoins(){
@@ -145,7 +157,12 @@ export class AppComponent {
     this.change = 0.0;
     this.cost = 0.0;
     this.total = 0.0;
+    this.coinsReturned = true;
     this.getCoins();
+  }
+
+  getCoinsToReturn(){
+    return this.coinsToReturn;
   }
 
 }

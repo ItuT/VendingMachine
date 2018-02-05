@@ -59,7 +59,11 @@
     </button>
 </div>
   <br>
-
+  <button *ngIf="coinsReturned" class="btn btn-info text-center col-md-12">
+      <label class="text-danger">
+        <strong>Sorry you couldn't afford! Collect your R {{getCoinsToReturn()}}</strong>
+      </label>
+    </button>
   <button *ngIf="serverResult" class="btn btn-info text-center col-md-12">
     <label class="text-danger">
       <strong>{{serverRes}}</strong>
