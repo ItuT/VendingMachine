@@ -22,7 +22,9 @@ Junit for testing
 DATA RESOURCES
 A file based datasource that can be updated via uploading a Json file with available products and coin denominations.
 
-PROBLEM Identified during the POC
+PROBLEMS Identified during the POC
+
+- not up to the latest tech standards, ioT, NFC, Mobile payments etc
 
 ## The second plan(smart Vending Machine)
 
@@ -44,8 +46,6 @@ ioT vending maching
 - can auto order products based on availability in the inventory
 - location based services and/or
 - can be remotely updated with new product prices
-
--
 
 __________________________________________________________________________________________________________________________
 
