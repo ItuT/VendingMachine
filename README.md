@@ -62,6 +62,7 @@ SOLUTIONS
 
  -- OLD ABONDONED IMPLEMENTATION
 
+This is an exclipse project
 Run unit tests to test the system. The GUI was not completed.
 
 https://github.com/ItuT/VendingMachine/tree/master/VendingMachine
