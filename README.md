@@ -79,8 +79,18 @@ http://vendingmachineapp-env.g4pqirigky.eu-west-2.elasticbeanstalk.com/
 
 
 CLIENTS
-Access the running version on this link: 
+
+ WEB-APP client
+ 
+ Source Code
+ https://github.com/ItuT/VendingMachine/tree/master/smart-vending-machine
+ 
+ Access the running version on this link: 
 
 http://smartvendingmachine.s3-website-eu-west-1.amazonaws.com/
+
+ ANDROID Client
+ 
+ Not implemented
 
 
