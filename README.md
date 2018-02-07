@@ -60,11 +60,13 @@ ________________________________________________________________________________
 
 SOLUTIONS
 
-OLD ABONDONED IMPLEMENTATION
+ -- OLD ABONDONED IMPLEMENTATION
 
+Run unit tests to test the system. The GUI was not completed.
 
+https://github.com/ItuT/VendingMachine/tree/master/VendingMachine
 
-NEW DESIGN
+ -- NEW DESIGN
 
 BACK-END
  API link
