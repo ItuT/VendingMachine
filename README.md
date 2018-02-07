@@ -1,12 +1,12 @@
 # VendingMachine
 
-REQUIREMENTS
+## REQUIREMENTS
 
  This vending machine which vends products based upon four (4) denominations of coins and returns coins if there is no item.
  
 __________________________________________________________________________________________________________________________
 
-The initial plan
+## The initial plan
 
 Java SE application
 Swing Desktop GUI
@@ -24,10 +24,7 @@ A file based datasource that can be updated via uploading a Json file with avail
 
 PROBLEM Identified during the POC
 
-
-
-
-The second plan(smart Vending Machine)
+## The second plan(smart Vending Machine)
 
 Tech
 
@@ -50,24 +47,18 @@ ioT vending maching
 
 -
 
-IMPLEMENTED
-
-BACK-END
-
-FRONT
-
 __________________________________________________________________________________________________________________________
 
-SOLUTIONS
+## SOLUTIONS
 
- -- OLD ABONDONED IMPLEMENTATION
+### OLD ABONDONED IMPLEMENTATION
 
 This is an exclipse project
 Run unit tests to test the system. The GUI was not completed.
 
 https://github.com/ItuT/VendingMachine/tree/master/VendingMachine
 
- -- NEW DESIGN
+### NEW DESIGN
 
 BACK-END
 
