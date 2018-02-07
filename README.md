@@ -60,27 +60,27 @@ https://github.com/ItuT/VendingMachine/tree/master/VendingMachine
 
 ### NEW DESIGN
 
-BACK-END
+#### BACK-END
 
  Source Code
  https://github.com/ItuT/VendingMachine/tree/master/VendingMachineApp
 
  API link
-http://vendingmachineapp-env.g4pqirigky.eu-west-2.elasticbeanstalk.com/
+ http://vendingmachineapp-env.g4pqirigky.eu-west-2.elasticbeanstalk.com/
 
 
-CLIENTS
+#### CLIENTS
 
- WEB-APP client
+ ##### WEB-APP client
  
  Source Code
  https://github.com/ItuT/VendingMachine/tree/master/smart-vending-machine
  
  Access the running version on this link: 
 
-http://smartvendingmachine.s3-website-eu-west-1.amazonaws.com/
+ http://smartvendingmachine.s3-website-eu-west-1.amazonaws.com/
 
- ANDROID Client
+ ##### ANDROID Client
  
  Not implemented
 
