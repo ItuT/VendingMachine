@@ -9,14 +9,14 @@ package vending.exceptions;
  */
 public class NotFullPaidException extends RuntimeException {
     private String message;
-    private long remaining;
+    private double remaining;
    
-    public NotFullPaidException(String message, long remaining) {
+    public NotFullPaidException(String message, double remaining) {
         this.message = message;
         this.remaining = remaining;
     }
    
-    public long getRemaining(){
+    public double getRemaining(){
         return remaining;
     }
    

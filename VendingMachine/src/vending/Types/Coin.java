@@ -1,7 +1,7 @@
 /**
  * 
  */
-package vending.types;
+package vending.Types;
 
 /**
  * @author Itumeleng

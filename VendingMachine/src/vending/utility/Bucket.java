@@ -3,10 +3,6 @@
  */
 package vending.utility;
 
-/**
- * @author Itumeleng
- *
- */
 public class Bucket<E1, E2> {
     private E1 first;
     private E2 second;
