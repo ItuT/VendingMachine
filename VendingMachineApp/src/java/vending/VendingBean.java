@@ -53,8 +53,9 @@ public class VendingBean implements VendingBeanLocal {
                 .build();
             return jo;
         }else{
+            this.change = Double.valueOf(paidAmount) - Double.valueOf(Item.valueOf(product.toUpperCase()).getPrice());
             JsonObject jo = Json.createObjectBuilder()
-                  .add("result","Collect and Enjoy your "+product.toUpperCase() +" Your change is R"+change+" :)")
+                  .add("result","Enjoy "+product.toUpperCase() +" Change is R"+change)
                 .build();
             return jo;
         }

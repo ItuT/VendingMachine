@@ -1,25 +1,43 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div col-md-12>
   <div class="text-success" style="text-align:center">
-    <h1>
-      Welcome to {{ title }}!
-    </h1>
+    <button class="btn btn-info col-md-12" disabled>
+      <strong>{{ title }}</strong>
+    </button>
   </div>
   <br>
-  <table class="text-info text-center col-md-12" style="text-align: center">
-    <tr *ngFor="let entry of items" >
-      <td>
-        <strong>{{ entry }}</strong>
-      </td>
-      <td>
-        <input type="radio" name="radiogroup" [checked]="idx === 0" [value]="entry.id" (click)="productSelected(entry)">
-      </td>
-      <td>
-        <div>
-          <strong>{{ getProductPrice(entry) }}</strong>
-        </div>
-      </td>
-    </tr>
+  <div class="col-md-12 text-center">
+    <img class="col-md-1" src="{{imageUrl}}" *ngIf="loading" />
+
+  </div>
+  <hr>
+  <table class=" text-center col-md-12" style="text-align: center">
+      <thead class="text-success">
+          <tr>
+            <td>
+              Product
+            </td>
+            <td></td>
+            <td>Price</td>
+          </tr>
+        </thead>
+        
+    <tbody class="text-info">
+      <tr *ngFor="let entry of items">
+        <td>
+          <strong>{{ entry }}</strong>
+        </td>
+        <td>
+          <input type="radio" name="radiogroup" [checked]="idx === 0" [value]="entry" (click)="productSelected(entry)">
+        </td>
+        <td>
+          <div>
+            <strong>{{ getProductPrice(entry) }}</strong>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+   
   </table>
   <br>
   <button class="text-info text-center col-md-12" (click)="refreshProducts()">
@@ -40,6 +58,11 @@
       <strong>Change: {{getChange()}}</strong>
     </label>
   </div>
+  <hr>
+  <div class="col-md-12 text-center">
+    <p class="text-muted"><strong>Insert Coins Here</strong></p>
+    <img class="col-md-1" src="{{imageUrl}}" *ngIf="coinsReloading" />
+  </div>
   <table style="text-align: center" class=" text-center col-md-12">
     <tr *ngFor="let entry of coins">
       <td>
@@ -49,30 +72,34 @@
   </table>
   <br>
   <div class="text-info text-center col-md-12">
-  <button class="text-info text-center col-md-8" (click)="refreshCoins()">
-    <strong>Refresh Coins</strong>
-  </button>
-  <br>
-  <br>
-  <button class="text-danger text-center col-md-8" (click)="returnCoins()">
+    <button class="text-info text-center col-md-8" (click)="refreshCoins()">
+      <strong>Refresh Coins</strong>
+    </button>
+    <br>
+    <br>
+    <button class="text-warning text-center col-md-8" (click)="returnCoins()">
       <strong>Return Coins</strong>
     </button>
-</div>
+  </div>
   <br>
-  <button *ngIf="coinsReturned" class="btn btn-info text-center col-md-12">
-      <label class="text-danger">
-        <strong>Sorry you couldn't afford! Collect your R {{getCoinsToReturn()}}</strong>
-      </label>
-    </button>
-  <button *ngIf="serverResult" class="btn btn-info text-center col-md-12">
-    <label class="text-danger">
+  <hr>
+  <button *ngIf="coinsReturned" class="btn btn-muted text-center col-md-12">
+    <div class="text-danger">
+      <strong>Sorry you couldn't afford! Collect your R {{getCoinsToReturn()}}</strong>
+    </div>
+  </button>
+  <button *ngIf="serverResult && !buyingRequest" class="btn btn-muted text-center col-md-12">
+    <div class="text-danger content-wrapper">
       <strong>{{serverRes}}</strong>
-    </label>
+    </div>
   </button>
   <br>
   <br>
+  <div class="col-md-12 text-center">
+    <img class="col-md-1" src="{{imageUrl}}" *ngIf="buyingRequest" />
+  </div>
   <div class="text-center col-md-12">
-    <button class="btn btn-success text-center col-md-6" (click)="postProduct()">Collect Product & Change</button>
+    <button class="btn btn-success text-center col-md-6" (click)="postProduct()"><strong>Collect Product & Change</strong></button>
   </div>
   <br>
   <br>

@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'The Smartest Vending Machine The World Has Ever Seen!';
+  title = 'Smart Vending Machine';
   items:any[];
   coins:any[];
   total:any;
@@ -20,6 +20,10 @@ export class AppComponent {
   serverRes:any;
   coinsReturned: boolean = false;
   coinsToReturn:any;
+  imageUrl = "assets/images/ajax-loader.gif";
+  loading = false;
+  buyingRequest = false;
+  coinsReloading = false;
 
   constructor(private httpClient:HttpClient){
     this.getProducts();
@@ -29,6 +33,7 @@ export class AppComponent {
     this.total = 0.0;
     this.change = 0.0;
     this.cost = 0.0;
+  
   }
 
   getState(state: any){
@@ -40,6 +45,7 @@ export class AppComponent {
   }
 
   getCoins(){
+    this.coinsReloading = true;
     //http://35.177.195.110/products?name=%22itu%22
     //http://localhost:8080/VendingMachineApp/coins
     this.httpClient.get('http://35.177.195.110/coins')
@@ -52,6 +58,7 @@ export class AppComponent {
          window.localStorage.setItem(key,json[key]);
          console.log(json[key]);
          this.coins.push(key);
+          this.coinsReloading = false;
         }
        
       }
@@ -59,6 +66,7 @@ export class AppComponent {
    }
 
   getProducts(){
+    this.loading = true;
    //http://35.177.195.110/products?name=%22itu%22
   // http://localhost:8080/VendingMachineApp/products?name=%22itu%22
    this.httpClient.get('http://35.177.195.110/products')
@@ -71,6 +79,7 @@ export class AppComponent {
         window.localStorage.setItem(key,json[key]);
         console.log(json[key]);
         this.items.push(key);
+        this.loading = false;
        }
       
      }
@@ -78,6 +87,10 @@ export class AppComponent {
   }
 
   postProduct(){
+    console.log("cost = "+this.cost);
+    if(this.cost > 0.0 && this.getTotalPaid() > 0.0){
+      console.log("post()");
+    this.buyingRequest = true;
     console.log("price = "+this.total);
     //
     //http://localhost:8080/VendingMachineApp/products
@@ -90,9 +103,32 @@ export class AppComponent {
       (data:any) => {
         this.serverResult = true;
         console.log(data);
-        this.serverRes = data["result"];
+        this.serverRes = ""+data["result"];
+        this.buyingRequest = false;
+        if(this.serverRes.indexOf("joy") !== -1){
+         // this.refreshCoins();
+          this.refreshProducts();
+          this.balance = 0.0;
+          this.cost = 0.0;
+          this.change = 0.0;
+          this.total = 0.0;
+
+        }
       }
     )
+  }else{
+    this.coinsReturned = false;
+    this.serverResult = true;
+    console.log("paid "+this.getTotalPaid());
+    if(this.getTotalPaid() > 0.0)
+      this.serverRes = "Please select Product";
+    else{
+      if(this.cost <= 0)
+      this.serverRes = "Please select Product and Insert Coins!";
+      else
+      this.serverRes = "Insert Coins";
+    }
+  }
   }
 
   getProductPrice(productName:any){
@@ -102,8 +138,8 @@ export class AppComponent {
   }
 
   coinInserted(coin:any){
-    this.serverRes = false;
-    this.coinsReturned =false;
+    this.serverResult = false;
+    this.coinsReturned = false;
       this.total = this.total + parseFloat(window.localStorage.getItem(coin));
       this.coinsToReturn = this.total;
       //console.log(window.localStorage.getItem(coin));
@@ -118,7 +154,7 @@ export class AppComponent {
   }
 
   productSelected(prod: any){
-    this.serverRes = false;
+    this.serverResult = false;
     this.coinsReturned =false;
     console.log("prooo "+prod);
     this.selectedProd = prod;
@@ -138,8 +174,11 @@ export class AppComponent {
   }
 
   refreshProducts(){
-    this.serverRes = false;
-    this.coinsReturned =false;
+    this.items = null;
+    this.selectedProd = undefined;
+
+   // this.serverResult = false;
+   // this.coinsReturned =false;
     this.cost = 0.0;
     this.getBalance();
     this.change = this.balance;
@@ -147,18 +186,28 @@ export class AppComponent {
   }
 
   refreshCoins(){
-    this.serverRes = false;
+    this.coins = null;
+    this.serverResult = false;
     this.coinsReturned =false;
     this.getCoins();
   }
 
   returnCoins(){
-    this.balance = 0.0;
-    this.change = 0.0;
-    this.cost = 0.0;
-    this.total = 0.0;
-    this.coinsReturned = true;
-    this.getCoins();
+    console.log("ret "+this.getTotalPaid());
+    if(this.getTotalPaid() > 0.0){
+      this.balance = 0.0;
+      this.change = 0.0;
+      this.cost = 0.0;
+      this.total = 0.0;
+      this.coinsReturned = true;
+      this.serverResult = false;
+      if(this.selectedProd)this.refreshProducts();
+      this.getCoins();
+    }else{
+      this.coinsReturned = false;
+      this.serverResult = true;
+      this.serverRes = "No Coins Inserted!";
+    }
   }
 
   getCoinsToReturn(){

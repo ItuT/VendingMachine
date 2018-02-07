@@ -77,7 +77,7 @@ public class products extends HttpServlet {
                     .add(Item.HENNESSY.getName(), Item.HENNESSY.getPrice())
                     .add(Item.SIMBA.getName(), Item.SIMBA.getPrice())
                     .add(Item.PEANUTS.getName(), Item.PEANUTS.getPrice())
-                    .add(Item.STYVESANT.getName(),Item.STYVESANT.getPrice())))
+                    .add(Item.STUYVESANT.getName(),Item.STUYVESANT.getPrice())))
                 .build();
         
         response.setContentType("application/json;charset=UTF-8");
