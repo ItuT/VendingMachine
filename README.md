@@ -64,8 +64,9 @@ https://github.com/ItuT/VendingMachine/tree/master/VendingMachine
 
  ##### DATASOURCE
  https://github.com/ItuT/VendingMachine/blob/master/db.json
- NB: Takes about a minute to update. Its accessed through 
-  https://github.com/ItuT/VendingMachine/blob/master/db.json
+
+ NB: Takes about a minute to update the server after changes are made to db.json file. Its accessed through 
+   https://my-json-server.typicode.com/itut/vendingmachine
 
  ##### APPLICATION
  Source Code
