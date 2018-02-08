@@ -1,0 +1,15 @@
+{
+	"products": [{
+		"Panado": 0.5,
+		"Hennessy": 3.5,
+		"Simba": 2.5,
+		"Peanuts": 1.5,
+		"Stuyvesant": 4.5
+	}],
+  "coins": [{
+		"Fifty Cents": 0.5,
+		"One Rand": 1.0,
+		"Three Rand": 2.0,
+		"Five Rand": 5.0
+	}]
+}
