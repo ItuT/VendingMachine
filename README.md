@@ -62,10 +62,12 @@ https://github.com/ItuT/VendingMachine/tree/master/VendingMachine
 
 #### BACK-END
 
- ###### DATASOURCE
+ ##### DATASOURCE
  https://github.com/ItuT/VendingMachine/blob/master/db.json
+ NB: Takes about a minute to update. Its accessed through 
+  https://github.com/ItuT/VendingMachine/blob/master/db.json
 
- ###### APPLICATION
+ ##### APPLICATION
  Source Code
  https://github.com/ItuT/VendingMachine/tree/master/VendingMachineApp
 
