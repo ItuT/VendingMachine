@@ -7,14 +7,13 @@ package vending.products;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.json.Json;
-import javax.json.JsonObject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import vending.types.Coin;
+import org.json.JSONObject;
+import vending.VendingBean;
 
 /**
  *
@@ -61,7 +60,21 @@ public class coins extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        JsonObject jo = Json.createObjectBuilder()
+        
+        response.setContentType("application/json;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        VendingBean vbean = new VendingBean();
+       JSONObject resJson = null;
+       String res = "";
+        try{
+            //res = new JSONObject(vbean.dbHelper("products"));// JObject();
+            res = "{ \n\"coins\":"+vbean.dbHelper("coins")+"}\n";
+            resJson = new JSONObject(res);
+            out.print(resJson);
+        }catch(Exception e){
+            out.print(e.getMessage());
+        }
+        /*JsonObject jo = Json.createObjectBuilder()
                 .add("coins", Json.createArrayBuilder()
                   .add(Json.createObjectBuilder()
                     .add(Coin.FIFTYCENTS.getName(),Coin.FIFTYCENTS.getDenomination())
@@ -73,7 +86,7 @@ public class coins extends HttpServlet {
         
         response.setContentType("application/json;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        out.print(jo);
+        out.print(jo);*/
     }
 
     /**

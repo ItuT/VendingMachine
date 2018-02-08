@@ -9,7 +9,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringReader;
-import javax.ejb.EJB;
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
@@ -20,7 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import vending.VendingBean;
 import vending.types.Item;
-
+import org.json.JSONObject;
 /**
  *
  * @author Itumeleng
@@ -70,7 +69,22 @@ public class products extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        JsonObject jo = Json.createObjectBuilder()
+          
+        response.setContentType("application/json;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        VendingBean vbean = new VendingBean();
+       JSONObject resJson = null;
+       String res = "";
+        try{
+            //res = new JSONObject(vbean.dbHelper("products"));// JObject();
+            res = "{ \n\"products\":"+vbean.dbHelper("products")+"}\n";
+            resJson = new JSONObject(res);
+            out.print(resJson);
+        }catch(Exception e){
+            out.print(e.getMessage());
+        }
+        
+      /*  JsonObject jo = Json.createObjectBuilder()
                 .add("products", Json.createArrayBuilder()
                   .add(Json.createObjectBuilder()
                     .add(Item.PANADO.getName(),Item.PANADO.getPrice() )
@@ -78,11 +92,10 @@ public class products extends HttpServlet {
                     .add(Item.SIMBA.getName(), Item.SIMBA.getPrice())
                     .add(Item.PEANUTS.getName(), Item.PEANUTS.getPrice())
                     .add(Item.STUYVESANT.getName(),Item.STUYVESANT.getPrice())))
-                .build();
+                .build();*/
         
-        response.setContentType("application/json;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        out.print(jo);
+        
+        //out.print(res);
        // processRequest(request, response);
     }
 

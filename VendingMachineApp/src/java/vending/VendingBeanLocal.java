@@ -7,6 +7,7 @@ package vending;
 
 import javax.ejb.Local;
 import javax.json.JsonObject;
+import org.json.JSONException;
 
 /**
  *
@@ -14,5 +15,6 @@ import javax.json.JsonObject;
  */
 @Local
 public interface VendingBeanLocal {
-      JsonObject processPurchase(JsonObject jobject);
+      JsonObject processPurchase(JsonObject jobject) throws JSONException;
+      public String dbHelper(String res);
 }
