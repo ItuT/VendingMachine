@@ -1,22 +1,12 @@
 # VendingMachine
-The smartest vending machine the world has ever seen. Talk about ioT...
+
+## REQUIREMENTS
 
  This vending machine which vends products based upon four (4) denominations of coins and returns coins if there is no item.
-
-BACK-END
- API link
-http://vendingmachineapp-env.g4pqirigky.eu-west-2.elasticbeanstalk.com/
-
-
-CLIENTS
-Access the running version on this link: 
-
-http://smartvendingmachine.s3-website-eu-west-1.amazonaws.com/
-
-
+ 
 __________________________________________________________________________________________________________________________
 
-The initial plan
+## The initial plan
 
 Java SE application
 Swing Desktop GUI
@@ -32,12 +22,11 @@ Junit for testing
 DATA RESOURCES
 A file based datasource that can be updated via uploading a Json file with available products and coin denominations.
 
-PROBLEM Identified during the POC
+PROBLEMS Identified during the POC
 
+- not up to the latest tech standards, ioT, NFC, Mobile payments etc
 
-
-
-The second plan(smart Vending Machine)
+## The second plan(smart Vending Machine)
 
 Tech
 
@@ -58,12 +47,48 @@ ioT vending maching
 - location based services and/or
 - can be remotely updated with new product prices
 
--
+__________________________________________________________________________________________________________________________
 
-IMPLEMENTED
+## SOLUTIONS
 
-BACK-END
+### OLD ABONDONED IMPLEMENTATION
 
-FRONT
+This is an exclipse project
+Run unit tests to test the system. The GUI was not completed.
+
+https://github.com/ItuT/VendingMachine/tree/master/VendingMachine
+
+### NEW DESIGN
+
+#### BACK-END
+
+ ##### DATASOURCE
+ https://github.com/ItuT/VendingMachine/blob/master/db.json
+
+ NB: Takes about a minute to update the server after changes are made to db.json file. Its accessed through 
+   https://my-json-server.typicode.com/itut/vendingmachine
+
+ ##### APPLICATION
+ Source Code
+ https://github.com/ItuT/VendingMachine/tree/master/VendingMachineApp
+
+ API link
+ http://vendingmachineapp-env.g4pqirigky.eu-west-2.elasticbeanstalk.com/
+
+
+#### CLIENTS
+
+ ##### WEB-APP client
+ 
+ Source Code
+ https://github.com/ItuT/VendingMachine/tree/master/smart-vending-machine
+ 
+ Access the running version on this link: 
+
+ http://smartvendingmachine.s3-website-eu-west-1.amazonaws.com/
+
+ ##### ANDROID Client
+ 
+ Not implemented
 
 
