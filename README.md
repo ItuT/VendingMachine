@@ -51,7 +51,7 @@ ________________________________________________________________________________
 
 ## SOLUTIONS
 
-### OLD ABONDONED IMPLEMENTATION
+### OLD ABANDONED IMPLEMENTATION
 
 This is an exclipse project
 Run unit tests to test the system. The GUI was not completed.
